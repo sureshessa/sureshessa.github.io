@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suresh Essa - AI Specialist & GenAI Expert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #06b6d4;
+            --primary-dark: #0891b2;
+            --primary-light: #22d3ee;
+            --accent: #14b8a6;
+            --accent-light: #2dd4bf;
+            --success: #10b981;
+            --dark: #0f172a;
+            --darker: #020617;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --light: #f8fafc;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Modern background with subtle gradient mesh */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+                linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+        }
+
+        /* Decorative elements */
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.03) 50%, transparent 100%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; transform: translateX(-100%); }
+            50% { opacity: 0.6; transform: translateX(100%); }
+        }
+
+        /* Header/Hero Section */
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, transparent 0%, var(--darker) 100%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary-light) 50%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-text h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-text .subtitle {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        /* Modern contact info cards */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--primary-light);
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+
+        .contact-card .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        .contact-card a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card:hover a {
+            color: var(--primary-light);
+        }
+
+        .contact-card .contact-text {
+            color: var(--text);
+            font-weight: 500;
+            z-index: 1;
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--light);
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        /* Modern divider */
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+            margin-bottom: 3rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gradient accent line */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 
+                0 20px 60px rgba(6, 182, 212, 0.15),
+                0 0 0 1px rgba(6, 182, 212, 0.1);
+            transform: translateY(-8px);
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(6, 182, 212, 0.03) 100%);
+        }
+
+        .project-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            color: var(--light);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--primary-light);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-card h4::before {
+            content: '▸';
+            color: var(--accent-light);
+        }
+
+        .project-card p {
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .project-card ul {
+            margin-left: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-card ul li {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: var(--primary-light);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .skill-category:hover::before {
+            transform: translate(30%, -30%) scale(1.5);
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-category li {
+            padding: 0.6rem 0;
+            color: var(--text);
+            position: relative;
+            padding-left: 1.5rem;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .skill-category li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category li:hover {
+            color: var(--light);
+            padding-left: 2rem;
+        }
+
+        .skill-category li:hover::before {
+            width: 12px;
+            background: var(--accent-light);
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .award-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative corner accent */
+        .award-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 0 16px 0 100%;
+            transition: all 0.4s ease;
+        }
+
+        .award-card:hover::after {
+            width: 120px;
+            height: 120px;
+            opacity: 0.15;
+        }
+
+        .award-card:hover {
+            border-color: var(--accent);
+            box-shadow: 
+                0 20px 60px rgba(20, 184, 166, 0.15),
+                0 0 0 1px rgba(20, 184, 166, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .award-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .award-card h3::before {
+            content: '🏆';
+            font-size: 1.4rem;
+        }
+
+        .award-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            margin-top: 6rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        footer p:first-child {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        .scroll-top::before {
+            content: '↑';
+            color: var(--text);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                min-height: 80vh;
+                padding: 3rem 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid,
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-card {
+                width: 100%;
+            }
+
+            .project-card,
+            .skill-category,
+            .award-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .tech-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Suresh Essa</h1>
+                <h2>AI Specialist & GenAI Expert</h2>
+                <p class="subtitle">Transforming cutting-edge AI research into production-ready solutions. Specialized in Multi-Agent Systems, LLM Orchestration, and Agentic AI Platforms with 10+ years of experience in Machine Learning, Deep Learning, NLP, and Generative AI.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <a href="mailto:sure.essa@gmail.com">sure.essa@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <span class="contact-icon">📱</span>
+                        <div>
+                            <div class="contact-label">Phone</div>
+                            <span class="contact-text">+91-8904618075</span>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <span class="contact-icon">💼</span>
+                        <div>
+                            <div class="contact-label">LinkedIn</div>
+                            <a href="https://linkedin.com/in/sureshessa" target="_blank">linkedin.com/in/sureshessa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Professional Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Building next-generation AI systems at Bosch Global Software Technologies</p>
+        <div class="experience-grid">
+            <div class="project-card">
+                <h3>NeoAssist (GenAI)</h3>
+                <h4>Bosch Global Software Technologies</h4>
+                <p>Designed and developed a multimodal agentic stateful system using LangGraph for high-accuracy hybrid RAG across text and image data.</p>
+                <p>Key achievements:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Implemented Agents Orchestration with MCP for automated error diagnosis and Root Cause Analysis</li>
+                    <li>Advanced reasoning patterns: ReAct, Tree-of-Thought, Chain-of-Thought, and multi-agent orchestration</li>
+                    <li>Integrated safety features with Guardrails AI and prompt-injection defense</li>
+                    <li>Validated through Deepchecks, RAGAS pipelines, and custom metrics</li>
+                    <li>MLOps observability using DataDog</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">LangGraph</span>
+                    <span class="tech-tag">MCP</span>
+                    <span class="tech-tag">Multimodal LLMs</span>
+                    <span class="tech-tag">RAG</span>
+                    <span class="tech-tag">Guardrails AI</span>
+                    <span class="tech-tag">Redis</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>QuantumNexusEngine (GenAI)</h3>
+                <h4>Bosch Global Software Technologies</h4>
+                <p>Multi-agent AI workflow for automated log failure analysis and solution generation with advanced agentic reasoning.</p>
+                <p>Key achievements:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Fine-tuned base LLMs using PEFT and LoRA for domain-specific issue resolution</li>
+                    <li>Implemented Model Context Protocol layer with Jira, Bitbucket, and Confluence integration</li>
+                    <li>Deployed code-synthesis fallback agent using ReAct prompting</li>
+                    <li>Advanced GenAI security with NeMo Guardrails and prompt injection defenses</li>
+                    <li>Self-healing feedback loops with RL from agent interactions</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Multi-Agent Systems</span>
+                    <span class="tech-tag">LoRA</span>
+                    <span class="tech-tag">MCP</span>
+                    <span class="tech-tag">NeMo Guardrails</span>
+                    <span class="tech-tag">LangSmith</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>MCP EchoSystem (GenAI)</h3>
+                <h4>Bosch Global Software Technologies</h4>
+                <p>MCP ecosystem for internal tools, integrating engineering test management with GenAI capabilities.</p>
+                <p>Key achievements:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Built autonomous pipelines for test case, plan, and scope generation</li>
+                    <li>Integrated Bahaus Tools static code analysis for vulnerability detection</li>
+                    <li>OneDrive MCP layer for seamless storage and versioning</li>
+                    <li>CI/CD pipelines for MCP deployment and monitoring</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">MCP</span>
+                    <span class="tech-tag">Test Automation</span>
+                    <span class="tech-tag">CI/CD</span>
+                    <span class="tech-tag">Static Analysis</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Water Layer Thickness Prediction</h3>
+                <h4>Deep Learning for Autonomous Vehicles</h4>
+                <p>Designed RNN using PyTorch on LiDAR/radar datasets for real-time water layer thickness prediction.</p>
+                <p>Key achievements:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Applied transfer learning with attention mechanisms</li>
+                    <li>MLflow validation pipelines with regression metrics (MAE, RMSE, R²)</li>
+                    <li>LangSmith observability for model drift detection</li>
+                    <li>GitHub Actions CI/CD for continuous RNN retraining</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">RNN</span>
+                    <span class="tech-tag">Transfer Learning</span>
+                    <span class="tech-tag">MLflow</span>
+                    <span class="tech-tag">Autonomous Vehicles</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Intelligent Support Assist</h3>
+                <h4>Machine Learning</h4>
+                <p>Multi-channel ticket classification and optimal support routing system.</p>
+                <p>Key achievements:</p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Cascaded classifiers (Decision Trees, Random Forest, SVC) with hyperparameter optimization</li>
+                    <li>MLflow validation with stratified K-fold CV and precision-recall analysis</li>
+                    <li>Prometheus and Grafana monitoring stack</li>
+                    <li>Reinforcement Learning from Human feedback loops</li>
+                </ul>
+                <div class="tech-tags">
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Random Forest</span>
+                    <span class="tech-tag">MLflow</span>
+                    <span class="tech-tag">RLHF</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Comprehensive expertise across the AI/ML technology stack</p>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>AI/ML Specializations</h3>
+                <ul>
+                    <li>Machine Learning & Deep Learning</li>
+                    <li>Natural Language Processing</li>
+                    <li>Generative AI</li>
+                    <li>Model Context Protocol (MCP)</li>
+                    <li>Multi-Agent Orchestration</li>
+                    <li>Hybrid RAG</li>
+                    <li>LLM Fine-Tuning & Optimization</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>LLMs & GenAI Frameworks</h3>
+                <ul>
+                    <li>GPT, Claude, Gemini</li>
+                    <li>AutoGen</li>
+                    <li>LangGraph & LangChain</li>
+                    <li>LlamaIndex</li>
+                    <li>PyTorch & TensorFlow</li>
+                    <li>Hugging Face Transformers</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Programming & Development</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>C++</li>
+                    <li>JavaScript & React</li>
+                    <li>FastAPI & Flask</li>
+                    <li>HTML/CSS</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Vector Databases</h3>
+                <ul>
+                    <li>MongoDB</li>
+                    <li>LanceDB</li>
+                    <li>Neo4j (Graph DB)</li>
+                    <li>Elasticsearch</li>
+                    <li>OpenAI Embeddings</li>
+                    <li>Sentence Transformers</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>MLOps & Production</h3>
+                <ul>
+                    <li>LLM Observability (LangSmith)</li>
+                    <li>Docker & Kubernetes</li>
+                    <li>CI/CD Pipelines</li>
+                    <li>Git</li>
+                    <li>Datadog</li>
+                    <li>AWS & GCP</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Awards Section -->
+    <section id="awards">
+        <h2 class="section-title">Certifications & Awards</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Recognition for excellence and innovation in AI development</p>
+        <div class="awards-grid">
+            <div class="award-card">
+                <h3>NVIDIA Certified Associate</h3>
+                <p>Generative AI Multimodal - Achieved 93% exam score (Valid: Aug 2025 - Aug 2027)</p>
+            </div>
+            <div class="award-card">
+                <h3>GenAI Hackathon Winner</h3>
+                <p>Winner at Bosch for developing Model Context Protocols (MCPs) that integrated AI agents and LLM capabilities into internal products ecosystem</p>
+            </div>
+            <div class="award-card">
+                <h3>Best Contribution Award</h3>
+                <p>Organizational level recognition for Innovation at Bosch</p>
+            </div>
+            <div class="award-card">
+                <h3>Excellence Award in GenAI</h3>
+                <p>Recognized for exceptional work in the field of Generative AI at Bosch</p>
+            </div>
+            <div class="award-card">
+                <h3>Pinnacle Award</h3>
+                <p>Department level recognition for GenAI contributions at Bosch</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Suresh Essa. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">AI Specialist | GenAI Expert | Multi-Agent Systems Architect</p>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop"></div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.bg-animation');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
